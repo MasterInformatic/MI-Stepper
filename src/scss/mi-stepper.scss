@@ -1,0 +1,181 @@
+@import 'vars';
+
+*{
+	padding: 0px;
+	margin:  0px;
+	font-family: $font-family-sans-serif;
+	box-sizing: border-box;
+}
+
+.stepContainer{
+	width: 100%;
+	padding: 20px;
+
+	.stepIndicator{
+		width: 100%;
+		display: flex;
+		justify-content: space-around;
+		background: $white;
+
+		.step{
+			width: 100%;
+			display: flex;
+			justify-content: center;
+			padding: 10px;
+			position: relative;
+			z-index: 20;
+
+			&:not(:last-child){
+
+				&::before{
+					content: '';
+					width: 100%;
+					height: 4px;
+					position: absolute;
+					bottom: 50%;
+					left: 50%;
+					z-index: 1;
+					background: $line;
+				}
+
+				&::after{
+					  content: '';
+					  width: 0%;
+					  height: 4px;
+					  position: absolute;
+					  bottom: 50%;
+					  left: 50%;
+					  z-index: -1;
+				}
+			}
+
+
+			&.active{
+
+				a {
+					border-radius: 50px;
+				  	color: $textcolor;
+				  	border: 1px solid $done;
+				}
+			}
+
+
+			&.done{
+				
+				&:not(:last-child)::after{
+					width: 100%;
+				  	background: $done;
+				  	transform: translate(0%, 0%) scale3d(1, 1, 1);
+				  	transition: all 0.5s cubic-bezier(0.4, 0.0, 0.2, 1);
+				  	border-right: 5px solid white;
+				}
+
+				a {
+				  	color: $textdone;
+				  	position: relative;
+				  	overflow: hidden;
+				  	z-index: 2;
+					border: 1px solid $done;
+
+					&::after {
+						padding: 20px;
+					  	opacity: 1;
+					}
+				}
+			}
+
+			&.error{
+
+				a {
+				  	background: $error;
+				  	border-radius: 50px;
+				  	border: none;
+				  	color: $white;
+				}
+			}
+
+			a{
+				width: 30px;
+				height: 30px;
+				border-radius: 50px;
+				display: flex;
+				align-items: center;
+				justify-content: center;
+				padding: 20px;
+				border: 1px solid rgba($black ,0.3);
+				text-decoration: none;
+				background: $white;
+				font-family:  $font-family-sans-serif;
+				font-size: 14px;
+				font-weight: bold;
+				position: relative;
+  				overflow: hidden;
+				z-index: 1;
+  				color: $textcolor;
+
+  				&::after {
+					content: '\2713';
+					position: absolute;
+				  	width: 20px;
+				  	height: 20px;
+					background: $done;
+					color: $white;
+					font-size: 15px;
+				  	border-radius: 50px;
+				  	display: flex;
+				  	justify-content: center;
+				  	align-items: center;
+				  	transition: all 0.3s cubic-bezier(0.4, 0.0, 0.2, 1);
+				  	opacity: 0;
+				}
+			}
+
+		}
+	}
+
+	.tabs{
+
+		&.shadow{
+			.tab{
+				box-shadow: 1px 1px 5px 0px rgba($black, 0.2);
+			}
+		}
+
+		.tab{
+			width: 100%;
+			height: 100%;
+			padding: 50px 50px;
+			display: none;
+			background: $white;
+			border-radius: 5px;
+		}
+	}
+
+	.stepAction{
+		display: flex;
+		justify-content: flex-end;
+		padding: 20px;
+		background: $white;
+		user-select: none;
+	}
+
+}
+
+button.stpbtn{
+	border: 0px;
+	padding: 7px 15px;
+	background: #009688;
+	color: white;
+	cursor: pointer;
+	box-shadow: 0px 0px 5px 0px rgba($black ,0.3);
+	margin: 5px 10px;
+	outline: none;
+}
+
+#stepSave{
+	display: none;
+}
+
+#stepPrev{
+	display: none;
+}
