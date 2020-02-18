@@ -1,6 +1,5 @@
 /node_modules/
 package-lock.json
-index.html
 /src/scss/styleg.scss
 /dist/scss/styleg.css
 /dist/css/docs/

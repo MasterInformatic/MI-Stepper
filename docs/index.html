@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>MI - Stepper</title>
+	<link rel="stylesheet" type="text/css" href="css/mi-stepper.css">
+	
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<style type="text/css">
+		body {
+  background: #f8f9fa; }
+
+.container {
+  width: 70%;
+  margin: auto; }
+
+.header {
+  background: #212121;
+  width: 100%;
+  height: 50px;
+  z-index: 1000;
+  box-shadow: 1px 1px 5px 0px rgba(0, 0, 0, 0.5);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0px 50px;
+  overflow: hidden; }
+  .header .title span {
+    color: rgba(255, 255, 255, 0.9); }
+  .header .nav a {
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 16px;
+    font-weight: 500; }
+    .header .nav a:hover {
+      color: #fff; }
+    .header .nav a i {
+      margin: 0px 5px; }
+
+.card {
+  padding: 15px;
+  box-shadow: 0rem 0.2rem 0.5rem rgba(0, 0, 0, 0.9);
+  border: none;
+  border-radius: 0px;
+  background: #fff; }
+  .card .card-header {
+    position: relative;
+    color: rgba(0, 0, 0, 0.6);
+    padding: 15px 0px;
+    font-size: 20px; }
+  .card .card-body {
+    padding: 10px; }
+		
+	</style>
+
+</head>
+<body>
+
+<div class="header">
+	<div class="title">
+		<span>MI - Stepper</span>
+	</div>
+	<div class="nav">
+		<a href="https://github.com/MasterInformatic/MI-Stepper">
+			<i class="fab fa-github"></i>
+			GitHub
+		</a>
+	</div>
+</div>
+	
+<div class="container">
+	<br><br>
+	<div class="card">
+		<div class="card-header">
+			<h4>Linear Stepper</h4>
+		</div>
+		<div class="card-body">
+			
+			<div class="stepContainer">
+
+				<div class="stepIndicator">
+					
+					<div class="step">
+						<a href="#" data-target="one">
+							1</a>
+					</div>
+					<div class="step" >
+						<a href="#" data-target="two">
+							2
+						</a>
+					</div>
+					<div class="step" >
+						<a href="#" data-target="tree">
+							3
+						</a>
+					</div>
+
+				</div>
+
+				
+				<div class="tabs">
+					
+					<div class="tab" id="one">
+						<br><br><h1>1</h1><br><br>
+					</div>
+					<div class="tab" id="two">
+						<br><br><h1>2</h1><br><br>
+					</div>
+					<div class="tab" id="tree">
+						<br><br><h1>3</h1><br><br>
+					</div>
+					
+				</div>
+
+				<div class="stepAction">
+					<button class="stpbtn" id="stepPrev">Atras</button>
+					<button class="stpbtn" id="stepNext">Siguiente</button>
+					<button class="stpbtn" id="stepSave">Guardar</button>
+				</div>
+
+			</div>
+
+		</div>
+	</div>
+
+	
+</div>
+	
+<script type="text/javascript" src="js/mi-stepper.js"></script>
+<script type="text/javascript">
+	
+var step = new Stepper({
+	linear: false,
+	onChange: function(event,index){
+		console.log("INDEX => " + index);
+	},
+	onFinish: function(){
+		console.log("Obtener datos del formulario");
+	}, 
+	onFinished: function(){
+		console.log("Enviar");
+	}
+});
+step.init();
+</script>
+</body>
+</html>
