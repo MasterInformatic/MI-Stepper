@@ -1,9 +1,6 @@
 /node_modules/
-package-lock.json
-/src/scss/styleg.scss
-/dist/scss/styleg.css
-/dist/css/docs/
-/src/scss/docs/
-/src/
 package.json
 package-lock.json
+/dist/scss/styleg.css
+/dist/css/docs/
+/src/
