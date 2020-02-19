@@ -132,19 +132,24 @@
 <script type="text/javascript" src="js/mi-stepper.js"></script>
 <script type="text/javascript">
 	
-var step = new Stepper({
-	linear: false,
-	onChange: function(event,index){
-		console.log("INDEX => " + index);
-	},
-	onFinish: function(){
-		console.log("Obtener datos del formulario");
-	}, 
-	onFinished: function(){
-		console.log("Enviar");
-	}
-});
-step.init();
+	var step = new Stepper({
+		linear: false,
+		onChange: function(event,index){
+			console.log(index);
+			if(index == 1){
+				return false;
+			}
+			return true;
+		},
+		onFinish: function(){
+			// console.log("Obtener datos del formulario");
+		}, 
+		onFinished: function(){
+			// console.log("Enviar");
+		}
+	});
+	step.init();
+
 </script>
 </body>
 </html>
