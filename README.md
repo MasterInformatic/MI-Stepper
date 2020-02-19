@@ -1,18 +1,22 @@
 
 # mi-stepper
 
+![GitHub repo size](https://img.shields.io/github/repo-size/MasterInformatic/MI-Stepper)
+
 A Material Stepper.
 
 [Demo](https://masterinformatic.github.io/MI-Stepper/)
 
 
 Features:
+	
+ - [x] Linear Stepper
+ - [x] No linear Stepper
+ - [x] Works without *dependencies*
+ - [x] No **jQuery** needed
+ - [ ] Vertical Stepper
 
-- Linear stepper
-- Non linear stepper
-- Works without *dependencies*
-- No **jQuery** needed
-
+ 
 ## Table of contents
 
 - [Install](#install)
@@ -22,27 +26,31 @@ Features:
 - [Events](#events)
 - [License](#license)
 
-## Install
+# Install
 
-### CDN
+Download the files
 
-Download de files
+> ./dist/js/mi-stepper.min.js
+> ./dist/css/mi-stepper.min.css
 
-CDN | Link
------------- | -------------
-js minified | Soon...
-css minified | Soon...
+# How to use it
 
-## How to use it
-
-### HTML markup
+### CSS
 
 Include the CSS file:
 
 ```html
-<link rel="stylesheet" href="mi-stepper.min.css">
+<link rel="stylesheet" href="dist/css/mi-stepper.min.css">
 ```
 
+### JavaScript
+
+In HTML before the end of the `<body>` tag
+
+```html
+<script src="dist/js/mi-stepper.min.js"></script>
+```
+### HTML
 Add the following HTML:
 
 ```html
@@ -91,16 +99,6 @@ Add the following HTML:
 
 	</div>
 ```
-
-
-### JavaScript
-
-In HTML before the end of the `<body>` tag
-
-```html
-<script src="mi-stepper.min.js"></script>
-```
-
 ### Create a stepper
 
 You should wait for the document ready event and create a new instance of `Stepper`.
@@ -110,18 +108,7 @@ Vanilla JS
 
 ```js
 document.addEventListener('DOMContentLoaded', function () {
-	var step = new Stepper({
-		onChange: function(event, index){
-			console.log("Current index => " + index);
-		},
-		onFinish: function(){
-			console.log("Last step");
-		}, 
-		onFinished: function(){
-			console.log("Submit");
-		}
-	});
-	
+	var step = new Stepper();
 	step.init();
 })
 ```
@@ -181,35 +168,30 @@ Full example integration
 <script type="text/javascript" src="dist/js/mi-stepper.min.js"></script>
 <script type="text/javascript">
 	document.addEventListener('DOMContentLoaded', function () {
-	
-		var step = new Stepper({
-			onChange: function(event, index){
-				console.log("Current index => " + index);
-			},
-			onFinish: function(){
-				console.log("Last step");
-			}, 
-			onFinished: function(){
-				console.log("Submit");
-			}
-		});
-		
+		var step = new Stepper();
 		step.init();
-		
 	});
 </script>
 </body>
 </html>
 ```
 
-## Parameters
+# Parameters
+
+> *All parameters are optional*
+
 default value:
 
   ```js
   {
     linear: false,
+    onChange: function(event, index){}, 
+    onFinish: function(){}, 
+    onFinished: function(){}
   }
   ```
+
+For more information about the functions, check: [Events section](https://github.com/MasterInformatic/MI-Stepper#events)
 
 | Parameter | Description | Type |
 | --- | --- | --- |
@@ -219,7 +201,7 @@ default value:
 
 ### constructor
 
-Create an instance of `Stepper`, accepts two parameters.
+Create an instance of `Stepper`, accepts four parameters.
 
 ## Events
 
@@ -237,15 +219,15 @@ Example:
 document.addEventListener('DOMContentLoaded', function () {
 	var step = new Stepper({
 		onChange: function(event, index){
-			console.log("Current index => " + index);
 			if(index == 1){
 				//code here..
-			}else if(index ==2){
+			}else if(index == 2){
 				//code here...
 			}
 		},
 		onFinish: function(){
 			//Example: Disable back button
+			//Example: show data to confirm
 			console.log("This is the last step");
 		}, 
 		onFinished: function(){
@@ -254,6 +236,35 @@ document.addEventListener('DOMContentLoaded', function () {
 		}
 	});
 	
+	step.init();
+})
+```
+
+## Validate Steps
+
+Only works when the parameter **`linear`** is **`true`**
+
+```json
+{
+linear:true,
+...
+}
+```
+
+You can add `return false` if you wants prevent change to next step
+
+```js
+document.addEventListener('DOMContentLoaded', function () {
+	var step = new Stepper({
+		linear: true,//required for validate steps
+		onChange: function(event, index){
+			if(index == 2){
+				if(!yourCustomValidation()){
+					return false;//this prevent change
+				}
+			}
+		}
+	});
 	step.init();
 })
 ```

@@ -3,12 +3,17 @@
 <head>
 	<meta charset="UTF-8">
 	<title>MI - Stepper</title>
-	<link rel="stylesheet" type="text/css" href="css/mi-stepper.css">
+	<!-- <link rel="stylesheet" type="text/css" href="css/mi-stepper.css"> -->
+	<link rel="stylesheet" type="text/css" href="../dist/css/mi-stepper.min.css">
 	
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
 
 	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
 	<style type="text/css">
+		*{
+			margin: 0px;
+			padding: 0px;
+		}
 		body {
   background: #f8f9fa; }
 
@@ -129,25 +134,10 @@
 	
 </div>
 	
-<script type="text/javascript" src="js/mi-stepper.js"></script>
+<script type="text/javascript" src="../dist/js/mi-stepper.min.js"></script>
 <script type="text/javascript">
 	
-	var step = new Stepper({
-		linear: false,
-		onChange: function(event,index){
-			console.log(index);
-			if(index == 1){
-				return false;
-			}
-			return true;
-		},
-		onFinish: function(){
-			// console.log("Obtener datos del formulario");
-		}, 
-		onFinished: function(){
-			// console.log("Enviar");
-		}
-	});
+	var step = new Stepper();
 	step.init();
 
 </script>

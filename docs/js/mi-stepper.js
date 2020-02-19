@@ -11,11 +11,14 @@
 	var defaults = {
 	  linear: false,
 	  onChange: function(event, index){},
-	  onFinished: function(){}
+	  onFinished: function(){},
+	  onFinish: function(){}
 	}
 
 	if (arguments[0] && typeof arguments[0] === "object") {
 	  this.options = extendDefaults(defaults, arguments[0]);
+	}else{
+		this.options = extendDefaults(defaults, defaults);
 	}
 
   }
