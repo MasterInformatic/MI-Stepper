@@ -27,6 +27,14 @@
 	eventListeners.call(this);
   }
 
+  Stepper.prototype.next = function() {
+	next.call(this);
+  }
+
+  Stepper.prototype.prev = function() {
+	prev.call(this);
+  }
+
   function eventListeners(){
 	var _ = this;
 	document.getElementById("stepNext").addEventListener("click", next.bind(_));
@@ -51,12 +59,12 @@
 
   function showTab(index){
 
-  	var validate = true;
-  	if(this.options.linear){
-	  	if(this.options.onChange(event, this.currentTab) == false){
-	  		validate = false;
+	  	var validate = true;
+	  	if(this.options.linear){
+		  	if(this.options.onChange(event, this.currentTab) == false){
+		  		validate = false;
+		  	}
 	  	}
-  	}
 
 		if(this.direction === 'next'){
 			if(validate){

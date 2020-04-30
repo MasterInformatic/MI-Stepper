@@ -1,9 +1,10 @@
 
 # mi-stepper
 
-![GitHub repo size](https://img.shields.io/github/repo-size/MasterInformatic/MI-Stepper)
 
 A Material Stepper.
+
+![enter image description here](https://masterinformatic.github.io/MI-Stepper/img/demo.gif)
 
 [Demo](https://masterinformatic.github.io/MI-Stepper/)
 
@@ -28,17 +29,18 @@ Features:
 
 # Install
 
-Download the files
+Download the files, this files are in the `dist` folder
 
-> ./dist/js/mi-stepper.min.js
-> ./dist/css/mi-stepper.min.css
-
+```
+ dist/js/mi-stepper.min.js
+ dist/css/mi-stepper.min.css
+```
 # How to use it
 
 ### CSS
 
 Include the CSS file:
-
+ 
 ```html
 <link rel="stylesheet" href="dist/css/mi-stepper.min.css">
 ```
@@ -218,6 +220,8 @@ Example:
 ```js
 document.addEventListener('DOMContentLoaded', function () {
 	var step = new Stepper({
+		linear: false,
+		//launched every time any step changes
 		onChange: function(event, index){
 			if(index == 1){
 				//code here..
@@ -225,11 +229,13 @@ document.addEventListener('DOMContentLoaded', function () {
 				//code here...
 			}
 		},
+		//launched when you are in the last step
 		onFinish: function(){
 			//Example: Disable back button
 			//Example: show data to confirm
 			console.log("This is the last step");
 		}, 
+		//launched when you press the button 'save'
 		onFinished: function(){
 			//Example: form.submit();
 			console.log("Submit");
@@ -244,7 +250,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 Only works when the parameter **`linear`** is **`true`**
 
-```json
+```js
 {
 linear:true,
 ...
